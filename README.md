@@ -97,3 +97,20 @@ Logs can be found in `/home/android/klipper_logs`.
 
 ## Troubleshooting (ongoing section based on comments)
 - There might be the case that when accessing Mainsail through Browser, you get an error message and no connection to moonraker: mainsail Permission denied while connecting to upstream in `klipper_logs/mainsail_error.log`. To fix this you must change the file `/etc/nginx/nginx.conf`, change `user www-data;` to `user android;` 
+- If anyone is having network issues in the container as a non root user after a few minutes, you need to disable deep sleep/idle. You can do that by using this command in a shell (termux or adb doesn't matter): `dumpsys deviceidle disable`. You may also need this app: [Wake Lock - CPU Awake] (https://play.google.com/store/apps/details?id=com.dambara.wakelocker)
+- As per [ZerGo0](https://gist.github.com/ZerGo0) comments - The latest moonraker update seems to break a few things. There are some changes about the directory and file locations, but you can just sym link the new directories to the old ones using the included script: 
+  ```bash
+  sudo /etc/init.d/moonraker stop
+  cd ~/moonraker
+  scripts/data-path-fix.sh
+  sudo /etc/init.d/moonraker start
+  ```
+  You can obviously also do this manually.
+  You also have to add the following section to your `moonraker.conf`:
+  ```bash
+  [machine]
+  validate_service: False
+  validate_config: False
+  provider: none
+  ```
+  There are a few more deprecated settings now, check the notifications or moonraker docs to find out what you need to remove.
