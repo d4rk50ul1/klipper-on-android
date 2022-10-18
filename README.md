@@ -1,6 +1,7 @@
 # Using Android to run Klipper, Moonraker, Mainsail/Fuidd, and KlipperScreen
 
-## Disclaimer: this is an ongoing work, still some changes pending. will try to update it when i can.
+### Disclaimer: this is an ongoing work, still some changes pending. will try to update it when i can.
+#### Original work by @RyanEwen (https://gist.github.com/RyanEwen/ae81fc48ad00397f1026915f0e6beed9)
 ## Requirements
 - A rooted Android device.
 - An OTG+Charge cable up and running for the same device ( please check this video for reference: https://www.youtube.com/watch?v=8afFKyIbky0)
