@@ -49,7 +49,7 @@
 - Find your printer's serial device for use in Klipper's `printer.cfg`:  
   It will likely be `/dev/ttyACM0` or `/dev/ttyUSB0`. Check if either of those appear/disappear under `/dev/` when plugging/unplugging your printer.  
   
-  If you cannot find your printer in `/dev/`, then you can install the Octo4a app which includes a custom implementation of the CH34x driver. You don't need to run OctoPrint within it, but you will need to run the Octo4a app. To do this:   
+  If you cannot find your printer in `/dev/`, then you can check Octo4a app which includes a custom implementation of the CH34x driver. IMPORTANT: You don't need to run OctoPrint within it so once in the main screen of the app just stop it if it's running. To do this:   
     - Install Octo4a from https://github.com/feelfreelinux/octo4a/releases
     - Run Octo4a and let it install OctoPrint (optionally tap the Stop button once it's done installing).
     - Make sure Octo4a sees your printer (it will be listed with a checked-box next to it).
@@ -94,3 +94,6 @@
 ## Misc
 You can start/stop Klipper and Moonraker manually by using the `service` command (eg: `sudo service start klipper`).  
 Logs can be found in `/home/android/klipper_logs`.
+
+## Troubleshooting (ongoing section based on comments)
+- There might be the case that when accessing Mainsail through Browser, you get an error message and no connection to moonraker: mainsail Permission denied while connecting to upstream in klipper_logs/mainsail_error.log. To fix this you must change the file /etc/nginx/nginx.conf , change user www-data; to user android; 
