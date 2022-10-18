@@ -1,0 +1,7 @@
+#!/bin/bash
+
+KLIPPERSCREEN_USER=android
+KLIPPERSCREEN_CONFIG=/home/$KLIPPERSCREEN_USER/klipper_config/KlipperScreen.conf
+KLIPPERSCREEN_LOG=/home/$KLIPPERSCREEN_USER/klipper_logs/KlipperScreen.log
+
+/home/$KLIPPERSCREEN_USER/.KlipperScreen-env/bin/python /home/$KLIPPERSCREEN_USER/KlipperScreen/screen.py -c $KLIPPERSCREEN_CONFIG -l $KLIPPERSCREEN_LOG
