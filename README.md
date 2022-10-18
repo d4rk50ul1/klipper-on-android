@@ -3,17 +3,20 @@
 ### Disclaimer: this is an ongoing work, still some changes pending. will try to update it when i can.
 #### Original work by @RyanEwen (https://gist.github.com/RyanEwen/ae81fc48ad00397f1026915f0e6beed9)
 ## Requirements
-- A rooted Android device.
+- A rooted Android device with the following installed:
+  - Linux Deploy app: https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy
+  - XServer app: https://play.google.com/store/apps/details?id=x.org.server
+  - Octo4a app: https://github.com/feelfreelinux/octo4a
+  - Thermux app: https://play.google.com/store/apps/details?id=com.termux&hl=en&gl=US
 - An OTG+Charge cable up and running for the same device ( please check this video for reference: https://www.youtube.com/watch?v=8afFKyIbky0)
-- Linux Deploy app: https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy
-- XServer app: https://play.google.com/store/apps/details?id=x.org.server
-- Init scripts for Klipper and Moonraker (in this gist).
-- XTerm script for KlipperScreen (in this gist).
+- An already flashed printer using Klipper firmware. 
+  - For reference : https://3dprintbeginner.com/how-to-install-klipper-on-sidewinder-x2/
+
+- Init scripts for Klipper and Moonraker (scripts folder).
+- XTerm script for KlipperScreen (scripts folder).
 - 
  
 ## Setup Instructions
-- Install Linux Deploy.
-- Install XServer XSDL.
 - Create a container within Linux Deploy using the following settings:
   - **Bootstrap**:
     - **Distro**: `Debian` (buster)
