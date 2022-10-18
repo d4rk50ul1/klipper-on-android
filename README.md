@@ -114,3 +114,15 @@ Logs can be found in `/home/android/klipper_logs`.
   provider: none
   ```
   There are a few more deprecated settings now, check the notifications or moonraker docs to find out what you need to remove.
+ 
+- When checking the OTG+Charge Cable, each phone "recognizes" a different resistor, my recommendation is that once you build your cable, try not to solder the resistor directly to the 5 pin plug. Instead, use a breadboard temporary and test with different resistors. My approach was the following:
+    - Without connecting anything to the microusb port (not tested with type-c) Open Octo4a app in your mobile
+    - connect the printer to the usb modified cable (assuming that you have already builded one ;) ) 
+    - connect the charger to the microusb male port
+    - connect the modified cable to the mobile phone.
+        - If the phone detects charge and Octo4a shows a popup requesting access to a serial device, you're done! the resistor is working. 
+        - If the phone detects only charge and Octo4a doesn't show a popup requesting serial access, you must remove the resistor from the breadboard and try with a different one. 
+        - Repeat this process until you figure it out.
+        - My case i bought a resistor kit with values from 1k Ohm to 1M (about 20 possibilities). I changed them 1 by 1 until it worked. 
+        - Just as a reference in case anyone has the same device. I used a Lenovo tab M8 (TB 8505F) and it worked with a 10k Ohm resistor!
+         
