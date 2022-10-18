@@ -2,6 +2,7 @@
 
 ### Disclaimer: this is an ongoing work, still some changes pending. will try to update it when i can.
 #### Original work by @RyanEwen (https://gist.github.com/RyanEwen/ae81fc48ad00397f1026915f0e6beed9)
+#### Current setup i own: Artillery Genius Pro with Klipper Firmware + Lenovo Tab M8 running Klipper+Moonraker+Mainsail+klipperscreen
 ## Requirements
 - A rooted Android device with the following installed:
   - Linux Deploy app: https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy
