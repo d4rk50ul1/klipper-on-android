@@ -71,11 +71,11 @@
     ```
 - Install the init and xterm scripts from this gist:  
   ```bash
-  sudo wget -O /etc/default/klipper https://github.com/d4rk50ul1/klipper-on-android/blob/6727edf8b8540da102ce7ffd66fa2a0fcb8d50d3/scripts/etc_default_klipper
-  sudo wget -O /etc/init.d/klipper https://github.com/d4rk50ul1/klipper-on-android/blob/6727edf8b8540da102ce7ffd66fa2a0fcb8d50d3/scripts/etc_init.d_klipper
-  sudo wget -O /etc/default/moonraker https://github.com/d4rk50ul1/klipper-on-android/blob/6727edf8b8540da102ce7ffd66fa2a0fcb8d50d3/scripts/etc_default_moonraker
-  sudo wget -O /etc/init.d/moonraker https://github.com/d4rk50ul1/klipper-on-android/blob/6727edf8b8540da102ce7ffd66fa2a0fcb8d50d3/scripts/etc_init.d_moonraker
-  sudo wget -O /usr/local/bin/xterm https://github.com/d4rk50ul1/klipper-on-android/blob/6727edf8b8540da102ce7ffd66fa2a0fcb8d50d3/scripts/usr_local_bin_xterm
+  sudo wget -O /etc/default/klipper https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_default_klipper
+sudo wget -O /etc/init.d/klipper https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_init.d_klipper
+sudo wget -O /etc/default/moonraker https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_default_moonraker
+sudo wget -O /etc/init.d/moonraker https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_init.d_moonraker
+sudo wget -O /usr/local/bin/xterm https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/usr_local_bin_xterm
   
   sudo chmod +x /etc/init.d/klipper 
   sudo chmod +x /etc/init.d/moonraker 
