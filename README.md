@@ -97,7 +97,7 @@ You can start/stop Klipper and Moonraker manually by using the `service` command
 Logs can be found in `/home/android/klipper_logs`.
 
 ## Telegram Bot
-You can find the instructions how to setup the Telegram Bot [here](https://github.com/d4rk50ul1/klipper-on-android/blob/fea_telegram/telegram_instructions.md)
+You can find the instructions how to setup the Telegram Bot [here](https://github.com/d4rk50ul1/klipper-on-android/blob/main/telegram_instructions.md)
 
 ## Troubleshooting (ongoing section based on comments)
 - There might be the case that when accessing Mainsail through Browser, you get an error message and no connection to moonraker: mainsail Permission denied while connecting to upstream in `klipper_logs/mainsail_error.log`. To fix this you must change the file `/etc/nginx/nginx.conf`, change `user www-data;` to `user android;` 
