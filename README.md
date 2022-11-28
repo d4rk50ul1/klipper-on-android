@@ -1,4 +1,5 @@
 # Using Android to run Klipper, Moonraker, Mainsail/Fuidd, and KlipperScreen
+# Easier Version: https://github.com/gaifeng8864/klipper-on-android
 
 ### Disclaimer: this is an ongoing work, still some changes pending. will try to update it when i can.
 #### Original work by @RyanEwen (https://gist.github.com/RyanEwen/ae81fc48ad00397f1026915f0e6beed9)
