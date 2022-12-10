@@ -1,6 +1,6 @@
 # Configuration for /etc/init.d/moonraker
 
-MOONRAKER_USER=android
+MOONRAKER_USER=print3D
 MOONRAKER_CONFIG=/home/$MOONRAKER_USER/printer_data/config/moonraker.conf
 MOONRAKER_LOG=/home/$MOONRAKER_USER/printer_data/logs/moonraker.log
 MOONRAKER_SOCKET=/tmp/moonraker_uds
