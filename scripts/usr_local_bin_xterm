@@ -1,6 +1,6 @@
 #!/bin/bash
 
-KLIPPERSCREEN_USER=android
+KLIPPERSCREEN_USER=print3D
 KLIPPERSCREEN_CONFIG=/home/$KLIPPERSCREEN_USER/printer_data/config/KlipperScreen.conf
 KLIPPERSCREEN_LOG=/home/$KLIPPERSCREEN_USER/printer_data/logs/KlipperScreen.log
 
