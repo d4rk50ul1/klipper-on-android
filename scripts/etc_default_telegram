@@ -1,0 +1,7 @@
+#  Configuration for /etc/init.d/telegram
+
+TELEGRAM_USER=android
+TELEGRAM_CONFIG=/home/$TELEGRAM_USER/printer_data/config/telegram.conf
+TELEGRAM_LOG=/home/$TELEGRAM_USER/printer_data/logs/telegram.log
+TELEGRAM_EXEC=/home/$TELEGRAM_USER/moonraker-telegram-bot-env/bin/python
+TELEGRAM_ARGS="/home/$TELEGRAM_USER/moonraker-telegram-bot/bot/main.py -c $TELEGRAM_CONFIG -l $TELEGRAM_LOG"
