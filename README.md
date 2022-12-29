@@ -54,14 +54,11 @@
   If you cannot find your printer in `/dev/`, then you can check Octo4a app which includes a custom implementation of the CH34x driver. IMPORTANT: You don't need to run OctoPrint within it so once in the main screen of the app just stop it if it's running. To do this:   
     - Install Octo4a from https://github.com/feelfreelinux/octo4a/releases
     - Run Octo4a and let it install OctoPrint (optionally tap the Stop button once it's done installing).
-    - Make sure Octo4a sees your printer (it will be listed with a checked-box next to it).
-    - Install Termux from https://f-droid.org/en/packages/com.termux
-    - Run Termux and find the serial device created by Octo4a: 
-        ```bash
-        pkg install tsu
-        sudo ls -al /data/data/com.octo4a/files/serialpipe
-        ```
-        You should see that `/data/data/com.octo4a/files/serialpipe` is a link to `/dev/pts/0` or similar. Whatever it's linked to is the serial port you should use in `printer.cfg`. You can uninstall Termux after this as it's not needed for anything else.
+    - Make sure Octo4a sees your printer (it will be listed with a checked-box next to it).    
+    - Run `sudo unchroot readlink -f /data/data/com.octo4a/files/serialpipe`
+        You should see that `/data/data/com.octo4a/files/serialpipe` is a link to `/dev/pts/0` or similar. Whatever it's linked to is the serial port you should use in `printer.cfg`. 
+    - This port might change if the printer get disconected so it is wise to populate your `rc.local` with  `am start -n com.octo4a/.ui.InitialActivity && sleep 10 && ln -s \`sudo unchroot readlink -f /data/data/com.octo4a/files/serialpipe\` /dev/printer`
+
 - Make the serial device accessible to Klipper:
     ```bash
     sudo chmod 777 /dev/ttyACM0
