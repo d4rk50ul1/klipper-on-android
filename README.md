@@ -9,14 +9,12 @@
   - Linux Deploy app: https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy
   - XServer app: https://play.google.com/store/apps/details?id=x.org.server
   - Octo4a app: https://github.com/feelfreelinux/octo4a
-  - Thermux app: https://play.google.com/store/apps/details?id=com.termux&hl=en&gl=US
 - An OTG+Charge cable up and running for the same device ( please check this video for reference: https://www.youtube.com/watch?v=8afFKyIbky0)
 - An already flashed printer using Klipper firmware. 
   - For reference : https://3dprintbeginner.com/how-to-install-klipper-on-sidewinder-x2/
 
 - Init scripts for Klipper and Moonraker (scripts folder).
 - XTerm script for KlipperScreen (scripts folder).
-- 
  
 ## Setup Instructions
 - Create a container within Linux Deploy using the following settings:
@@ -28,7 +26,7 @@
     *Note: You can choose a different location but if it's within `${EXTERNALDATA}` then SSH may fail to start.*  
     - **User name**: `android`  
     *Note: You can choose something else if you make sure to update the scripts in this gist accordingly.*  
-  - **Init**:
+  - **INIT**:
     - **Enable**: `yes`
     - **Init system**: `sysv`
   - **SSH**:
@@ -55,20 +53,19 @@
     - Install Octo4a from https://github.com/feelfreelinux/octo4a/releases
     - Run Octo4a and let it install OctoPrint (optionally tap the Stop button once it's done installing).
     - Make sure Octo4a sees your printer (it will be listed with a checked-box next to it).
-    - Install Termux from https://f-droid.org/en/packages/com.termux
-    - Run Termux and find the serial device created by Octo4a: 
-        ```bash
-        pkg install tsu
-        sudo ls -al /data/data/com.octo4a/files/serialpipe
-        ```
-        You should see that `/data/data/com.octo4a/files/serialpipe` is a link to `/dev/pts/0` or similar. Whatever it's linked to is the serial port you should use in `printer.cfg`. You can uninstall Termux after this as it's not needed for anything else.
+    - Now you need to go back to Linux Deploy and edit the container settings:
+      - **MOUNTS**:
+          - **Enable**: `yes`
+          - **Mount points**: press on the "+" button
+            - Source: "/data/data/com.octo4a/files"
+            - Target: "/home/android/octo4a"
 - Make the serial device accessible to Klipper:
     ```bash
     sudo chmod 777 /dev/ttyACM0
     # or 
     sudo chmod 777 /dev/ttyUSB0
     # or 
-    sudo chmod 777 /dev/pts/0
+    sudo chmod 777 /home/android/octo4a/serialpipe
     ```
 - Install the init and xterm scripts from this gist:  
   ```bash
