@@ -57,8 +57,9 @@
       - **MOUNTS**:
           - **Enable**: `yes`
           - **Mount points**: press on the "+" button
-            - Source: "/data/data/com.octo4a/files"
-            - Target: "/home/android/octo4a"
+            - Source: `/data/data/com.octo4a/files`
+            - Target: `/home/android/octo4a`
+    - `/home/android/octo4a/serialpipe` is the serial port you need to use in your `printer.cfg`
 - Make the serial device accessible to Klipper:
     ```bash
     sudo chmod 777 /dev/ttyACM0
