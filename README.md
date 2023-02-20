@@ -53,6 +53,7 @@
     - Install Octo4a from https://github.com/feelfreelinux/octo4a/releases
     - Run Octo4a and let it install OctoPrint (optionally tap the Stop button once it's done installing).
     - Make sure Octo4a sees your printer (it will be listed with a checked-box next to it).
+      - There will be a prompt in your android device asking for permission to connect to your printer if detected.
     - Now you need to go back to Linux Deploy and edit the container settings:
       - **MOUNTS**:
           - **Enable**: `yes`
