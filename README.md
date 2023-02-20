@@ -35,11 +35,6 @@
     - **Enable**: `yes`
     - **Graphics subsystem**: `X11`
     - **Desktop environment**: `XTerm`
-  - **MOUNTS**:
-    - **Enable**: `yes`
-    - Mount points: press on the "+" button
-      - Source: /data/data/com.octo4a/files
-      - Target: /home/android/octo4a
 - SSH into the container.
 - Install Git and KIAUH: 
   ```bash
