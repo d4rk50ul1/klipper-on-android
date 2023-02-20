@@ -25,7 +25,7 @@
     - **Installation path**: `/data/local/debian`  
     *Note: You can choose a different location but if it's within `${EXTERNALDATA}` then SSH may fail to start.*  
     - **User name**: `android`  
-    *Note: You can choose something else if you make sure to update the scripts in this gist accordingly.*  
+    *Note: You can choose something else if you make sure to update the scripts, configs and paths in this tutorial accordingly.*  
   - **INIT**:
     - **Enable**: `yes`
     - **Init system**: `sysv`
