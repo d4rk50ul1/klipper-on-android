@@ -1,0 +1,54 @@
+  GNU nano 5.4                                                        /etc/init.d/mobileraker                                                                 
+#!/bin/bash
+#
+# mobileraker: Companion app to enable push notifications on mobileraker
+#
+# chkconfig: 2345 20 80
+# description: Companion app to enable push notifications on mobileraker
+# processname: mobileraker
+
+### BEGIN INIT INFO
+# Provides:          mobileraker
+# Required-Start:    $network $local_fs $remote_fs
+# Required-Stop:     $network $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Companion app to enable push notifications on mobileraker
+# Description:       Companion app to enable push notifications on mobileraker
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DEFAULTS_FILE=/etc/default/mobileraker
+PIDFILE=/var/run/mobileraker.pid
+
+. /lib/lsb/init-functions
+
+# Read defaults file
+[ -r $DEFAULTS_FILE ] && . $DEFAULTS_FILE
+
+case "$1" in
+  start)
+    log_daemon_msg "Starting mobileraker"
+    start-stop-daemon --start --background --make-pidfile --pidfile $PIDFILE --chuid $MOBILERAKER_USER --exec $MOBILERAKER_EXEC -- $MOBILERAKER_ARGS
+    log_end_msg $?
+    ;;
+  stop)
+    log_daemon_msg "Stopping mobileraker"
+    start-stop-daemon --stop --pidfile $PIDFILE
+    log_end_msg $?
+    ;;
+  restart)
+    $0 stop
+    sleep 1
+    $0 start
+    ;;
+  status)
+    status_of_proc -p $PIDFILE $MOBILERAKER_EXEC "mobileraker" && exit 0 || exit $?
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+    ;;
+esac
+
+exit 0
