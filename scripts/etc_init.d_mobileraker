@@ -1,12 +1,4 @@
-  GNU nano 5.4                                                        /etc/init.d/mobileraker                                                                 
 #!/bin/bash
-#
-# mobileraker: Companion app to enable push notifications on mobileraker
-#
-# chkconfig: 2345 20 80
-# description: Companion app to enable push notifications on mobileraker
-# processname: mobileraker
-
 ### BEGIN INIT INFO
 # Provides:          mobileraker
 # Required-Start:    $network $local_fs $remote_fs
@@ -18,6 +10,7 @@
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME="mobileraker"
 DEFAULTS_FILE=/etc/default/mobileraker
 PIDFILE=/var/run/mobileraker.pid
 
@@ -27,28 +20,32 @@ PIDFILE=/var/run/mobileraker.pid
 [ -r $DEFAULTS_FILE ] && . $DEFAULTS_FILE
 
 case "$1" in
-  start)
-    log_daemon_msg "Starting mobileraker"
-    start-stop-daemon --start --background --make-pidfile --pidfile $PIDFILE --chuid $MOBILERAKER_USER --exec $MOBILERAKER_EXEC -- $MOBILERAKER_ARGS
-    log_end_msg $?
-    ;;
-  stop)
-    log_daemon_msg "Stopping mobileraker"
-    start-stop-daemon --stop --pidfile $PIDFILE
-    log_end_msg $?
-    ;;
-  restart)
-    $0 stop
-    sleep 1
-    $0 start
-    ;;
-  status)
-    status_of_proc -p $PIDFILE $MOBILERAKER_EXEC "mobileraker" && exit 0 || exit $?
-    ;;
-  *)
-    echo "Usage: $0 {start|stop|restart|status}"
-    exit 1
-    ;;
+start)  log_daemon_msg "Starting" $NAME
+        start-stop-daemon --start --quiet --exec $MOBILERAKER_EXEC \
+                          --background --pidfile $PIDFILE --make-pidfile \
+                          --chuid $MOBILERAKER_USER --user $MOBILERAKER_USER\
+                          -- $MOBILERAKER_ARGS
+        log_end_msg $?
+        ;;
+stop)   log_daemon_msg "Stopping" $NAME
+        killproc -p $PIDFILE $MOBILERAKER_EXEC
+        RETVAL=$?
+        [ $RETVAL -eq 0 ] && [ -e "$PIDFILE" ] && rm -f $PIDFILE
+        log_end_msg $RETVAL
+        ;;
+restart) log_daemon_msg "Restarting" $NAME
+        $0 stop
+        $0 start
+        ;;
+reload|force-reload)
+        log_daemon_msg "Reloading configuration not supported" $NAME
+        log_end_msg 1
+        ;;
+status)
+        status_of_proc -p $PIDFILE $MOBILERAKER_EXEC $NAME && exit 0 || exit $?
+        ;;
+*)      log_action_msg "Usage: /etc/init.d/mobileraker {start|stop|status|restart|reload|force-reload}"
+        exit 2
+        ;;
 esac
-
 exit 0
