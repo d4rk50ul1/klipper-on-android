@@ -1,0 +1,5 @@
+# Configuration for /etc/init.d/mobileraker
+
+MOBILERAKER_USER=android
+MOBILERAKER_EXEC=/home/$MOBILERAKER_USER/mobileraker-env/bin/python
+MOBILERAKER_ARGS="/home/$MOBILERAKER_USER/mobileraker_companion/mobileraker.py"

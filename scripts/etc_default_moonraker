@@ -1,9 +1,8 @@
 # Configuration for /etc/init.d/moonraker
 
 MOONRAKER_USER=android
-MOONRAKER_CONFIG=/home/$MOONRAKER_USER/printer_data/config/moonraker.conf
-MOONRAKER_LOG=/home/$MOONRAKER_USER/printer_data/logs/moonraker.log
+MOONRAKER_DIRECTORY=/home/$MOONRAKER_USER/printer_data/
 MOONRAKER_SOCKET=/tmp/moonraker_uds
 MOONRAKER_PRINTER=/tmp/printer
 MOONRAKER_EXEC=/home/$MOONRAKER_USER/moonraker-env/bin/python
-MOONRAKER_ARGS="/home/$MOONRAKER_USER/moonraker/moonraker/moonraker.py -c $MOONRAKER_CONFIG -l $MOONRAKER_LOG"
+MOONRAKER_ARGS="/home/$MOONRAKER_USER/moonraker/moonraker/moonraker.py -d $MOONRAKER_DIRECTORY"

@@ -1,0 +1,5 @@
+# Configuration for /etc/init.d/crowsnest
+
+CROWSNEST_USER=android
+CROWSNEST_EXEC=/usr/local/bin/crowsnest
+CROWSNEST_ARGS="-c /home/$CROWSNEST_USER/printer_data/config/crowsnest.conf"

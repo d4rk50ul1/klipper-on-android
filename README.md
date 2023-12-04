@@ -69,7 +69,7 @@
     # or 
     sudo chmod 777 /home/android/octo4a/serialpipe
     ```
-- Install the init and xterm scripts from this gist:  
+- Install the init and xterm scripts from this gist:
   ```bash
   sudo wget -O /etc/default/klipper https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_default_klipper
   sudo wget -O /etc/init.d/klipper https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_init.d_klipper
@@ -98,7 +98,41 @@ Logs can be found in `/home/android/klipper_logs`.
 
 ## Telegram Bot
 You can find the instructions how to setup the Telegram Bot [here](https://github.com/d4rk50ul1/klipper-on-android/blob/main/telegram_instructions.md)
+## Mobileraker
+You can install mobileraker by following these steps:
+  1. Go to kiauh and install mobileraker
+     ```bash 
+     kiauh/kiauh.sh
+     ```
+  2. Install the init script for mobileraker from this git:
+     ```bash
+     sudo wget -O /etc/default/mobileraker https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_default_mobileraker
+     sudo wget -O /etc/init.d/mobileraker https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_init.d_mobileraker
 
+     sudo chmod +x /etc/init.d/mobileraker 
+    
+     sudo update-rc.d mobileraker defaults
+     ```
+## Crowsnest
+If you want to use a webcam to monitor your prints you have to install crowsnest.
+  1. Go to kiauh and install crowsnest
+     ```bash 
+     kiauh/kiauh.sh
+     ```
+  2. Install the init script for crowsnest from this git:
+     ```bash
+     sudo wget -O /etc/default/crowsnest https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_default_crowsnest
+     sudo wget -O /etc/init.d/crowsnest https://raw.githubusercontent.com/d4rk50ul1/klipper-on-android/main/scripts/etc_init.d_crowsnest
+
+     sudo chmod +x /etc/init.d/crowsnest 
+    
+     sudo update-rc.d crowsnest defaults
+     ```
+The crowsnest service will fail to start even if you have a webcam connected because it wasn't made for this use case. You need to delete [this](https://github.com/mainsail-crew/crowsnest/blob/master/libs/logging.sh#L98) line from ```/home/${user}/crowsnest/libs/logging.sh```. 
+
+When you connect your webcam it will most probably appear as a ```/dev/videoX``` device (mine is ```/dev/video3```). When you find your webcam you will need to ```sudo chmod 777 /dev/videoX``` it and edit the crowsnest.conf file that is located in ```/home/${user}/printer_data/config/``` to point to your camera.
+
+After you completed all the steps you need to start the service using ```sudo service crowsnest start``` and see if it works. If it doesent't look at the log that is located in ```/home/${user}/printer_data/log/crowsnest.log```. There will be some errors that it can't find any usable devices or cameras. You can ignore these errors, they appear because of our little workaround form above.
 ## Troubleshooting (ongoing section based on comments)
 - There might be the case that when accessing Mainsail through Browser, you get an error message and no connection to moonraker: mainsail Permission denied while connecting to upstream in `klipper_logs/mainsail_error.log`. To fix this you must change the file `/etc/nginx/nginx.conf`, change `user www-data;` to `user android;` 
 - If anyone is having network issues in the container as a non root user after a few minutes, you need to disable deep sleep/idle. You can do that by using this command in a shell (termux or adb doesn't matter): `dumpsys deviceidle disable`. You may also need this app: [Wake Lock - CPU Awake] (https://play.google.com/store/apps/details?id=com.dambara.wakelocker)
