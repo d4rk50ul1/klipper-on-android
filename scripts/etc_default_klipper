@@ -3,7 +3,8 @@
 KLIPPY_USER=android
 KLIPPY_CONFIG=/home/$KLIPPY_USER/printer_data/config/printer.cfg
 KLIPPY_LOG=/home/$KLIPPY_USER/printer_data/logs/klippy.log
-KLIPPY_SOCKET=/tmp/klippy_uds
+KLIPPY_SOCKET=/home/$KLIPPY_USER/printer_data/comms/klippy.sock
+KLIPPY_SERIAL=/home/$KLIPPY_USER/printer_data/comms/klippy.serial
 KLIPPY_PRINTER=/tmp/printer
 KLIPPY_EXEC=/home/$KLIPPY_USER/klippy-env/bin/python
-KLIPPY_ARGS="/home/$KLIPPY_USER/klipper/klippy/klippy.py $KLIPPY_CONFIG -l $KLIPPY_LOG -a $KLIPPY_SOCKET"
+KLIPPY_ARGS="/home/$KLIPPY_USER/klipper/klippy/klippy.py $KLIPPY_CONFIG -I $KLIPPY_SERIAL -l $KLIPPY_LOG -a $KLIPPY_SOCKET"
